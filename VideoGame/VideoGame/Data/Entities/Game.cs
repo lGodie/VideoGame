@@ -4,16 +4,16 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace VideoGame.Models
+namespace VideoGame.Data.Entities
 {
-    public partial class Games
+    public partial class Game
     {
         public int Id { get; set; }
 
 
 
-        [Display(Name = "Име")]
-        [Required(ErrorMessage = "Името е задължително поле")]
+        [Display(Name = "Nombre")]
+        [Required(ErrorMessage = "Digite nombre")]
         public string Name { get; set; }
 
         [Display(Name = "Pais")]
@@ -34,7 +34,7 @@ namespace VideoGame.Models
 
 
         [Display(Name = "Tamaño de juego")]
-        [Required(ErrorMessage = "tamaño invalido")]
+        [Required(ErrorMessage = "Tamaño invalido")]
         public string GameSize { get; set; }
 
         [Display(Name = "Plataforma")]
