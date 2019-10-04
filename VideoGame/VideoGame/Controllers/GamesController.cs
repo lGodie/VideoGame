@@ -49,12 +49,10 @@ namespace VideoGame.Controllers
             return View();
         }
 
-        // POST: Games/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+       
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Country,Website,Description,Languages,GameSize,Platform,Genre,Type")] Game game)
+        public async Task<IActionResult> Create(Game game)
         {
             if (ModelState.IsValid)
             {
@@ -81,12 +79,9 @@ namespace VideoGame.Controllers
             return View(game);
         }
 
-        // POST: Games/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Country,Website,Description,Languages,GameSize,Platform,Genre,Type")] Game game)
+        public async Task<IActionResult> Edit(int id,  Game game)
         {
             if (id != game.Id)
             {
