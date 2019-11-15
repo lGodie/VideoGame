@@ -66,5 +66,10 @@ namespace VideoGame.Helpers
             var user = await _userManager.FindByEmailAsync(email);
             return user;
         }
+
+        public async Task<IdentityResult> UpdateUserAsync(User user)
+        {
+            return await _userManager.UpdateAsync(user);
+        }
     }
 }

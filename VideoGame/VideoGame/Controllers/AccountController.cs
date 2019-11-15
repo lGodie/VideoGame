@@ -89,5 +89,40 @@ namespace VideoGame.Controllers
             }
             return RedirectToAction("Login", "Account");
         }
+
+        public async Task<IActionResult> ChangeUser()
+        {
+            var user = await _userHelper.GetUserByEmailAsync(User.Identity.Name);
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            var model = new EditUserDto
+            {
+                Nombres = user.Nombres,
+                Apellidos = user.Apellidos
+            };
+
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ChangeUser(EditUserDto model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = await _userHelper.GetUserByEmailAsync(User.Identity.Name);
+
+                user.Nombres = model.Nombres;
+                user.Apellidos = model.Apellidos;
+
+                await _userHelper.UpdateUserAsync(user);
+                return RedirectToAction("Index", "Home");
+            }
+
+            return View(model);
+        }
     }
 }

@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using VideoGame.Data;
 using VideoGame.Data.Entities;
+using System.Threading;
 
 namespace VideoGame.Controllers
 {
@@ -58,8 +56,8 @@ namespace VideoGame.Controllers
             {
                 _context.Add(game);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
+                ViewBag.Message = "El videojuego fue creado exitosamente";
+            }            
             return View(game);
         }
 
