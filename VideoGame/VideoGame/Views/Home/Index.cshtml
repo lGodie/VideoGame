@@ -3,9 +3,16 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome @User.Identity.Name</h1>
+    <h1 class="display-4">Fases de la metodologia @User.Identity.Name</h1>
    
 </div>
 
+<a asp-controller="Concepto" asp-action="Index" class="btn btn-warning">Concepto</a>
 
-<a asp-controller="Games" asp-action="Index" class="btn btn-warning">Lista de video juegos</a>
+<a asp-controller="Planificacion" asp-action="Index" class="btn btn-warning">Planificación</a>
+
+<a asp-controller="Elaboracion" asp-action="Index" class="btn btn-warning">Elaboración</a>
+
+<a asp-controller="Beta" asp-action="Index" class="btn btn-warning">Beta</a>
+
+<a asp-controller="Despliegue" asp-action="Index" class="btn btn-warning">Despliegue</a>

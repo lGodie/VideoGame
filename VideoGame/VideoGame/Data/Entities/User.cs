@@ -18,6 +18,8 @@ namespace VideoGame.Data.Entities
         [Display(Name = "Nombre completo")]
         public string nombreCompleto => $"{Nombres} {Apellidos}";
 
+        public int TipoUsuario { get; set; }
+
     }
 
 }
