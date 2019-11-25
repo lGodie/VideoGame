@@ -50,5 +50,8 @@ namespace VideoGame.Data.Entities
 
         public ICollection<Riesgo> Riesgos { get; set; }
 
+        public ICollection<OpcionesMejora> OpcionesMejoras { get; set; }
+
+
     }
-    }
+}

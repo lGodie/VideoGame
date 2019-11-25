@@ -218,5 +218,77 @@ namespace VideoGame.Controllers
             return View(riesgoViewModel);
         }
 
+
+        public async Task<IActionResult> Mejora(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var game = await _context.Games
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (game == null)
+            {
+                return NotFound();
+            }
+
+            var mejora = await _context.OpcionesMejoras
+                .FirstOrDefaultAsync(m => m.gameId == id);
+            if (mejora == null)
+            {
+                var soloJuego = new MejoraViewModel
+                {
+                    Games = game
+
+                };
+                return View(soloJuego);
+            }
+            var model = new MejoraViewModel
+            {
+                Games = game,
+                Mejoras = mejora
+
+            };
+            return View(model);
+
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Mejora(int id, MejoraViewModel mejoraViewModel)
+        {
+            mejoraViewModel.Mejoras.gameId = id;
+
+            var mejora = new OpcionesMejora
+            {
+                Descripcion = mejoraViewModel.Mejoras.Descripcion,
+                TipoOpcionMejora = mejoraViewModel.Mejoras.TipoOpcionMejora,
+                gameId = mejoraViewModel.Mejoras.gameId
+            };
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _context.Update(mejora);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!GameExists(mejoraViewModel.Games.Id))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return RedirectToAction(nameof(Index));
+            }
+            return View(mejoraViewModel);
+        }
+
     }
 }

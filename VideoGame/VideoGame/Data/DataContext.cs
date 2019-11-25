@@ -12,5 +12,8 @@ namespace VideoGame.Data
         public DbSet<Game> Games { get; set; }
         public DbSet<Riesgo> Riesgos { get; set; }
 
+        public DbSet<OpcionesMejora> OpcionesMejoras { get; set; }
+
+
     }
 }

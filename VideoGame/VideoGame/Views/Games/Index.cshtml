@@ -84,7 +84,9 @@
                                 <td>
                                     <a asp-action="Edit" class="btn btn-warning " asp-route-id="@item.Id">Editar  </a>
                                     <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Borrar </a>
-                                    <a asp-action="Riesgo" class="btn btn-dark " asp-route-id="@item.Id">Agregar riesgo  </a>
+                                    <a asp-action="Riesgo" class="btn btn-primary " asp-route-id="@item.Id">Agregar riesgo  </a>
+                                    <a asp-action="Mejora" class="btn btn-primary " asp-route-id="@item.Id">Agregar mejora  </a>
+
                                 </td>
                             </tr>
                         }
