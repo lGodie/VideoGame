@@ -11,9 +11,8 @@ namespace VideoGame.Data
         }
         public DbSet<Game> Games { get; set; }
         public DbSet<Riesgo> Riesgos { get; set; }
-
         public DbSet<OpcionesMejora> OpcionesMejoras { get; set; }
-
-
+        public DbSet<Desarrollador> Desarrolladores { get; set; }
+        public DbSet<productorInterno> productorInternos { get; set; }
     }
 }
