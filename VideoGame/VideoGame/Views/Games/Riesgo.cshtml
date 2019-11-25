@@ -1,0 +1,119 @@
+﻿@model VideoGame.Models.RiesgoViewModel
+@{
+    ViewData["Title"] = "Riesgo";
+}
+
+
+<h1>Agregar Riesgo al videojuego</h1>
+<div class="text-success">
+    <p>
+        @ViewBag.Message
+    </p>
+</div>
+<div>
+
+</div>
+
+<div class="btn-group btn-group-justified">
+    <a class="btn btn-primary" asp-action="Index">Lista de videojuegos</a>
+</div>
+
+<hr />
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <h3 class="panel-title">Ingrese riesgo</h3>
+            <div class="panel panel-danger">
+                <div class="panel-heading">
+                    <form asp-action="Riesgo">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="form-group">
+                            <label asp-for="Riesgos.Nombre" class="control-label"></label>
+                            <input asp-for="Riesgos.Nombre" class="form-control" />
+                            <span asp-validation-for="Riesgos.Nombre" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Riesgos.Descripcion" class="control-label"></label>
+                            <input asp-for="Riesgos.Descripcion" class="form-control" />
+                            <span asp-validation-for="Riesgos.Descripcion" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Riesgos.TipoRiesgo" class="control-label"></label>
+                            <input asp-for="Riesgos.TipoRiesgo" class="form-control" />
+                            <span asp-validation-for="Riesgos.TipoRiesgo" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="submit" class="btn btn-primary" value="Riesgo" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-md-4">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Datos del videojuego</h3>
+                    <form asp-action="Riesgo">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <input type="hidden" asp-for="Games.Id" />
+                        <div class="form-group">
+                            <label asp-for="Games.Name" class="control-label"></label>
+                            <input asp-for="Games.Name" class="form-control" />
+                            <span asp-validation-for="Games.Name" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Games.Country" class="control-label"></label>
+                            <input asp-for="Games.Country" class="form-control" />
+                            <span asp-validation-for="Games.Country" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Games.Website" class="control-label"></label>
+                            <input asp-for="Games.Website" class="form-control" />
+                            <span asp-validation-for="Games.Website" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Games.Description" class="control-label"></label>
+                            <input asp-for="Games.Description" class="form-control" />
+                            <span asp-validation-for="Games.Description" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Games.Languages" class="control-label"></label>
+                            <input asp-for="Games.Languages" class="form-control" />
+                            <span asp-validation-for="Games.Languages" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Games.GameSize" class="control-label"></label>
+                            <input asp-for="Games.GameSize" class="form-control" />
+                            <span asp-validation-for="Games.GameSize" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Games.Platform" class="control-label"></label>
+                            <input asp-for="Games.Platform" class="form-control" />
+                            <span asp-validation-for="Games.Platform" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Games.Genre" class="control-label"></label>
+                            <input asp-for="Games.Genre" class="form-control" />
+                            <span asp-validation-for="Games.Genre" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Games.Type" class="control-label"></label>
+                            <input asp-for="Games.Type" class="form-control" />
+                            <span asp-validation-for="Games.Type" class="text-danger"></span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }
+

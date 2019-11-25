@@ -18,36 +18,43 @@
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
 <body>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Metodologias VideoGames</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right">
-                        @if (User.Identity.IsAuthenticated)
-                        {
-                            <li><a asp-controller="Account" asp-action="ChangeUser">@User.Identity.Name</a></li>
-
-                            <li><a asp-controller="Account" asp-action="Logout">Logout</a></li>
-                        }
-                        else
-                        {
-                            <li><a asp-area="" asp-controller="Account" asp-action="Login">Login</a></li>
-                        }
-                    </ul>
-                </div>
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <div class="container">
+            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Metodologias VideoGames</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                <ul class="navbar-nav flex-grow-1">
+                    @*<li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                    </li>*@
+                </ul>
             </div>
+
+            <ul class="nav navbar-nav navbar-right">
+                @if (User.Identity.IsAuthenticated)
+                {
+                    @*<li><a asp-controller="Account" asp-action="ChangeUser">@User.Identity.Name</a></li>*@
+
+                    <li><a asp-controller="Account" class="btn btn-outline-success my-2 my-sm-0" asp-action="Logout">Logout</a></li>
+                }
+                else
+                {
+                    <li><a asp-area="" class="btn btn-outline-success my-2 my-sm-0" asp-controller="Account" asp-action="Login">Login</a></li>
+                }
+            </ul>
+        </div>
+        @if (User.Identity.IsAuthenticated)
+        {
+            <span class="navbar-text">
+                <a asp-controller="Account" class="btn btn-outline-info my-2 my-sm-0" asp-action="ChangeUser">@User.Identity.Name</a>
+            </span>
+              }
         </nav>
         <div class="container">
             <partial name="_CookieConsentPartial" />

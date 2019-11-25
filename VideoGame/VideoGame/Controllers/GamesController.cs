@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using VideoGame.Data;
 using VideoGame.Data.Entities;
 using System.Threading;
+using VideoGame.Models;
 
 namespace VideoGame.Controllers
 {
@@ -142,5 +143,80 @@ namespace VideoGame.Controllers
         {
             return _context.Games.Any(e => e.Id == id);
         }
+
+        // GET: Games/Riesgo
+        public async Task<IActionResult> Riesgo(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var game = await _context.Games
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (game == null)
+            {
+                return NotFound();
+            }
+
+            var riesgo = await _context.Riesgos
+                .FirstOrDefaultAsync(m => m.gameId == id);
+            if (riesgo == null)
+            {
+                var soloJuego = new RiesgoViewModel
+                {
+                    Games = game
+
+                };
+                return View(soloJuego);
+            }
+            var model = new RiesgoViewModel
+            {
+                Games = game,
+                Riesgos = riesgo
+
+            };
+            return View(model);
+
+        }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Riesgo(int id,  RiesgoViewModel riesgoViewModel )
+        {
+            riesgoViewModel.Riesgos.gameId = id;
+
+            var riesgo = new Riesgo
+            {
+                Nombre = riesgoViewModel.Riesgos.Nombre, 
+                Descripcion = riesgoViewModel.Riesgos.Descripcion,
+                TipoRiesgo = riesgoViewModel.Riesgos.TipoRiesgo,
+                gameId = riesgoViewModel.Riesgos.gameId
+            };
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _context.Update(riesgo);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!GameExists(riesgoViewModel.Games.Id))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return RedirectToAction(nameof(Index));
+            }
+            return View(riesgoViewModel);
+        }
+
     }
 }

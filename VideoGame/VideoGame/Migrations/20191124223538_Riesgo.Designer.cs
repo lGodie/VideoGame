@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using VideoGame.Data;
 
 namespace VideoGame.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20191124223538_Riesgo")]
+    partial class Riesgo
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -170,17 +172,17 @@ namespace VideoGame.Migrations
 
                     b.Property<string>("Descripcion");
 
+                    b.Property<int?>("GameId");
+
                     b.Property<string>("Nombre");
 
                     b.Property<string>("TipoRiesgo");
 
-                    b.Property<int>("gameId");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("gameId");
+                    b.HasIndex("GameId");
 
-                    b.ToTable("Riesgos");
+                    b.ToTable("Riesgo");
                 });
 
             modelBuilder.Entity("VideoGame.Data.Entities.User", b =>
@@ -293,8 +295,7 @@ namespace VideoGame.Migrations
                 {
                     b.HasOne("VideoGame.Data.Entities.Game")
                         .WithMany("Riesgos")
-                        .HasForeignKey("gameId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("GameId");
                 });
 #pragma warning restore 612, 618
         }

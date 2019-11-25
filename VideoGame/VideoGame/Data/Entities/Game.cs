@@ -48,5 +48,7 @@ namespace VideoGame.Data.Entities
         [Display(Name = "Tipo")]
         public string Type { get; set; }
 
+        public ICollection<Riesgo> Riesgos { get; set; }
+
     }
     }

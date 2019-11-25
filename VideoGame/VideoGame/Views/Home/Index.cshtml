@@ -3,16 +3,74 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Fases de la metodologia @User.Identity.Name</h1>
-   
+    <h1 class="display-4">Fases de la metodologia SUM</h1>
+
 </div>
 
-<a asp-controller="Concepto" asp-action="Index" class="btn btn-warning">Concepto</a>
 
-<a asp-controller="Planificacion" asp-action="Index" class="btn btn-warning">Planificación</a>
+<div class="card mb-3">
+   
+    
+</div>
+<div class="card">
+    <div class="card-body">
 
-<a asp-controller="Elaboracion" asp-action="Index" class="btn btn-warning">Elaboración</a>
 
-<a asp-controller="Beta" asp-action="Index" class="btn btn-warning">Beta</a>
 
-<a asp-controller="Despliegue" asp-action="Index" class="btn btn-warning">Despliegue</a>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="card text-white bg-info mb-3" style="max-width: 18rem;">
+                        <div class="card-header">Fase de concepto</div>
+                        <div class="card-body">
+                            <a asp-controller="Concepto" asp-action="Index" class="btn btn-light btn-lg btn-block">Concepto</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="card text-white bg-info mb-3" style="max-width: 18rem;">
+                        <div class="card-header">Fase de Planificación</div>
+                        <div class="card-body">
+                            <a asp-controller="Planificacion" asp-action="Index" class="btn btn-light btn-lg btn-block">Planificación</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card text-white bg-info mb-3" style="max-width: 18rem;">
+                        <div class="card-header">Fase de Elaboración</div>
+                        <div class="card-body">
+                            <a asp-controller="Elaboracion" asp-action="Index" class="btn btn-light btn-lg btn-block">Elaboración</a>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="card text-white bg-info mb-3" style="max-width: 18rem;">
+                        <div class="card-header">Fase Beta</div>
+                        <div class="card-body">
+                            <a asp-controller="Beta" asp-action="Index" class="btn btn-light btn-lg btn-block">Beta</a>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="card text-white bg-info mb-3" style="max-width: 18rem;">
+                        <div class="card-header">Fase de Despliegue</div>
+                        <div class="card-body">
+                            <a asp-controller="Despliegue" asp-action="Index" class="btn btn-light btn-lg btn-block">Despliegue</a>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+
+
+    </div>
+</div>
