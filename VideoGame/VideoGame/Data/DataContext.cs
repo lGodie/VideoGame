@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using VideoGame.Data.Entities;
+using VideoGame.Models;
 
 namespace VideoGame.Data
 {
@@ -14,5 +15,6 @@ namespace VideoGame.Data
         public DbSet<OpcionesMejora> OpcionesMejoras { get; set; }
         public DbSet<Desarrollador> Desarrolladores { get; set; }
         public DbSet<productorInterno> productorInternos { get; set; }
+        public DbSet<VideoGame.Models.DesarrolladorViewModel> DesarrolladorViewModel { get; set; }
     }
 }
